@@ -1,0 +1,313 @@
+html {
+    scroll-behavior: smooth;
+}
+
+/* --- Keep all your other CSS exactly the same --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* Make sure your filename is correct here */
+    --bg-image: url('images/background-character.jpeg'); 
+    
+    --bg-color: #EBE7E7; 
+    --text-color: #1a1a1a;
+    --primary-btn: #8a92be;
+    --hero-color: #584a5c;
+    --border-color: #1a1a1a;
+    
+    /* KEEPING YOUR FONTS EXACTLY AS REQUESTED */
+    --font-aeri: 'Hanalei Fill', cursive;
+    --font-velle: 'Italianno', cursive;
+    --font-hero: 'Combo';
+    --font-base: 'Imprima', cursive;
+}
+body.dark-mode {
+    /* Change this to your new dark image filename */
+    --bg-image: url('images/background-dark.jpg'); 
+    
+    /* Set this to black so the bars on the sides disappear */
+    background-color: #000000; 
+    
+    --text-color: #ffffff;
+    --primary-btn: #3a4163;
+    --hero-color: #ffffff;
+    --border-color: #efefef;
+    background-size: 100%;
+
+}
+
+body {
+    background-color: #E7E6E4; /* Light mode side bar color */
+    background-image: var(--bg-image);
+    background-size: contain; /* Shows the whole character */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    
+    color: var(--text-color);
+    font-family: var(--font-base);
+    transition: background 0.4s ease, background-color 0.4s ease;
+    min-height: 100vh;
+}
+/* --- Navigation --- */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 4%;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.diamond-logo {
+    width: 32px;
+    height: 32px;
+    border: 1.5px solid var(--border-color);
+    transform: rotate(45deg);
+}
+
+.logo-text { font-family: var(--font-aeri); font-size: 2.2rem; font-weight: 400; }
+.logo-text span { font-family: var(--font-velle); font-size: 2.8rem; margin-left: -2px; }
+
+.nav-right-section {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 0.5rem;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-size: 1.1rem;
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+    transition: 0.3s;
+}
+
+nav a.active {
+    background-color: var(--primary-btn);
+    border: 1px solid var(--border-color);
+}
+
+.theme-toggle {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    border: 1px solid var(--border-color);
+    background: transparent;
+    color: var(--text-color);
+    cursor: pointer;
+    font-size: 1.2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* --- Hero Section --- */
+.hero {
+    display: flex;
+    align-items: center;
+    padding: 2rem 8% 5rem;
+    min-height: 80vh;
+}
+
+.hero-content {
+    max-width: 600px;
+}
+
+.hero-title {
+    font-family: var(--font-hero);
+    font-size: 8.2rem;
+    font-weight: 400;
+    line-height: 1.1;
+    color: var(--hero-color);
+    margin-bottom: 1.5rem;
+    letter-spacing: 2px;
+}
+
+.hero-subtitle {
+    font-size: 1.8rem;
+    margin-bottom: 2.5rem;
+    letter-spacing: 0.5px;
+}
+
+/* --- Hero Buttons --- */
+.hero-buttons {
+    display: flex;
+    gap: 1.2rem;
+}
+
+.btn {
+    text-decoration: none;
+    padding: 0.7rem 2.2rem;
+    border-radius: 30px;
+    font-size: 1.2rem;
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+    transition: transform 0.2s;
+}
+
+.btn-primary { background-color: var(--primary-btn); box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+.btn-outline { background-color: transparent; }
+
+/* Scroll Arrow */
+.scroll-down {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    border: 1px solid var(--border-color);
+    background: transparent;
+    color: var(--text-color);
+    cursor: pointer;
+}
+
+/* The layer that covers the WHOLE screen */
+.global-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;   /* 100% of the viewport width */
+    height: 100vh;  /* 100% of the viewport height */
+    background-color: rgba(0, 0, 0, 0); 
+    z-index: 9999;  /* Sits on top of everything */
+    pointer-events: none; /* Allows you to click buttons through it */
+    transition: background-color 0.5s ease;
+}
+
+/* When dark mode is on, the overlay turns dark everywhere */
+body.dark-mode .global-overlay {
+    background-color: rgba(0, 0, 0, 0.7); /* Adjust 0.7 for more/less darkness */
+}
+/* The layer that covers EVERYTHING */
+.global-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;   /* Forces it to cover the side bars */
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0); 
+    z-index: 9999;
+    pointer-events: none;
+    transition: background-color 0.5s ease;
+}
+
+body.dark-mode .global-overlay {
+    background-color: rgba(0, 0, 0, 0.4); /* Lowering from 0.5 to 0.4 makes text brighter */
+}
+body.dark-mode .hero-title {
+    color: #FFFFFF;
+    text-shadow: none; /* Removes the glow so the edges stay sharp */
+    opacity: 1;        /* Ensures no transparency */
+}
+
+/* Ensure the subtitle is also fully visible */
+body.dark-mode .hero-subtitle {
+    color: #FFFFFF;
+    opacity: 0.9;      /* Slightly softer than the title, but still clear */
+}
+
+/* 1. Lift the Hero Content above the shadow */
+.hero-content {
+    position: relative;
+    z-index: 10000; /* Higher than the overlay's 9999 */
+}
+
+/* 2. Lift the Header/Nav above the shadow */
+header {
+    position: relative;
+    z-index: 10000;
+}
+
+/* 3. Ensure pure white text in Dark Mode */
+body.dark-mode .hero-title, 
+body.dark-mode .hero-subtitle,
+body.dark-mode nav a,
+body.dark-mode .logo-text {
+    color: #FFFFFF !important;
+    opacity: 1 !important;
+    /* This removes any tint from the overlay */
+}
+.form-box {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    max-width: 400px;
+    margin-top: 2rem;
+}
+
+.form-box input {
+    padding: 0.8rem 1rem;
+    border-radius: 20px;
+    border: 1px solid var(--border-color);
+    font-family: var(--font-base);
+    font-size: 1rem;
+    background: transparent;
+    color: var(--text-color);
+}
+
+.form-box input:focus {
+    outline: none;
+    border-color: var(--primary-btn);
+}
+
+/* Genre Selector Floating Button */
+.genre-selector {
+    position: absolute;
+    right: 8%;
+    top: 50%; /* vertically center-ish */
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    z-index: 10001; /* above everything */
+}
+
+.genre-options {
+    display: none;
+    flex-direction: column;
+    margin-top: 0.5rem;
+    gap: 0.5rem;
+}
+
+.genre-option {
+    background-color: var(--primary-btn);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    color: var(--text-color);
+    font-family: var(--font-base);
+    transition: transform 0.2s;
+}
+
+.genre-option:hover {
+    transform: scale(1.05);
+}
+
+/* Show selected option differently */
+.genre-option.selected {
+    background-color: var(--hero-color);
+    color: #fff;
+}

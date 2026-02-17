@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AerVelle</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hanalei+Fill&family=Irish+Grover&family=Italianno&family=Jacques+Francois+Shadow&family=Combo&family=Imprima&display=swap" rel="stylesheet">
+</head>
+
+<body id="home"> <div class="global-overlay"></div> 
+
+    <header>
+    <div class="logo-container">
+        <div class="diamond-logo"></div>
+        <a href="index.html" style="text-decoration: none; color: inherit;">
+            <h1 class="logo-text">Aeri<span>Velle</span></h1>
+        </a>
+    </div>
+
+    <div class="nav-right-section">
+        <nav>
+            <ul>
+                <li><a href="index.html#home">Home</a></li>
+                <li><a href="index.html#explore">Explore</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="login.html">Login</a></li>
+                <li><a href="register.html">Register</a></li>
+            </ul>
+        </nav>
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+            &#x263D; 
+        </button>
+    </div>
+</header>
+
+    <main class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">
+                READ,<br>
+                REFLECT,<br>
+                WRITE
+            </h1>
+            <p class="hero-subtitle">Your personal digital sanctuary.</p>
+            
+            <div class="hero-buttons">
+                <a href="register.html" class="btn btn-primary">Get Started</a>
+                <a href="#about" class="btn btn-outline">About Us</a>
+            </div>
+        </div>
+        
+    </main>
+
+    <section id="explore" style="min-height: 100vh; padding: 100px 8%;">
+        <h2 style="font-family: var(--font-hero); font-size: 3rem; color: var(--hero-color);">Explore</h2>
+        <p>Your exploration content goes here...</p>
+    </section>
+
+    <section id="about" style="min-height: 100vh; padding: 100px 8%;">
+        <h2 style="font-family: var(--font-hero); font-size: 3rem; color: var(--hero-color);">About Us</h2>
+        <p>Your about content goes here...</p>
+    </section>
+
+    <button class="scroll-down" onclick="window.location.href='#explore'">
+        &darr; 
+    </button>
+
+    <script>
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const body = document.body;
+        themeToggleBtn.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+        });
+    </script>
+</body>
+</html>
